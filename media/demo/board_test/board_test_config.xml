@@ -1,0 +1,11 @@
+<BoardTest>
+    <!-- screen rotation degree -->
+    <Global >
+        <screen rotation="270" />
+    </Global>
+    
+    <TestSuit> 
+        <TFCard enable = "true">
+    </TestSuit>
+    
+</BoardTest>

@@ -1,0 +1,15 @@
+*
+!*.*
+!*/
+*.o
+*.so
+*.a
+AlgorithmsSedgewick
+AlgorithmsSedgewick/*
+training/build/
+!.gitignore
+!Makefile
+.pydevproject
+.project
+.cproject
+build

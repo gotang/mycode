@@ -6,10 +6,10 @@ LOCAL_SRC_ALGORITHMS:= \
 	./searching/HashTables.cpp \
 	./searching/SearchingVerifier.cpp \
 	./searching/BalancedSearchTree.cpp \
-	./strings/AlgorithmsVerifier.cpp \
-	./strings/Strings.cpp \
-	./graphs/Graphs.cpp \
-	./graphs/GraphsVerifier.cpp \
+	./string/StringVerifier.cpp \
+	./string/Strings.cpp \
+	./graph/Graphs.cpp \
+	./graph/GraphVerifier.cpp \
 	./misc/Miscellany.cpp \
 	./misc/MiscellanyVerifer.cpp
 

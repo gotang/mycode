@@ -26,12 +26,13 @@ add_executable(algorithms
 	searching/HashTables.cpp
 	searching/SearchingVerifier.cpp
 	searching/BalancedSearchTree.cpp
-	strings/StringsVerifier.cpp
-	strings/Strings.cpp
-	graphs/Graphs.cpp
-	graphs/GraphsVerifier.cpp
+	string/StringVerifier.cpp
+	string/Strings.cpp
+	graph/Graphs.cpp
+	graph/GraphVerifier.cpp
 	misc/Miscellany.cpp
 	misc/MiscellanyVerifer.cpp
+
 )
 	
 target_link_libraries(algorithms ${GTEST_BOTH_LIBRARIES} pthread)

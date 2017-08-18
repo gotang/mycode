@@ -38,12 +38,11 @@ int LintCode::digitCounts(int k, int n) {
 // param n : description of n
 // return: description of return
 long LintCode::trailingZeros(long n) {
-	if (n < 5)
-		return 0;
-
 	long sum = 0;
-	sum += n / 5;
-	sum += trailingZeros(sum);
+	while (n >= 5) {
+		n /= 5;
+		sum += n;
+	}
 	return sum;
 }
 

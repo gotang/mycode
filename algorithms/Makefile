@@ -1,5 +1,6 @@
 LOCAL_SRC_ALGORITHMS:= \
 	./main.cpp \
+	./sorting/Heap.cpp \
 	./sorting/Sorting.cpp \
 	./sorting/SortingVerifier.cpp \
 	./searching/BinarySearchTree.cpp \

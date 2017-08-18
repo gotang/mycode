@@ -21,6 +21,7 @@ include_directories(${CMAKE_SOURCE_DIR})
 add_executable(algorithms 
 	main.cpp
 	sorting/Sorting.cpp
+	sorting/Heap.cpp
 	sorting/SortingVerifier.cpp
 	searching/BinarySearchTree.cpp
 	searching/HashTables.cpp

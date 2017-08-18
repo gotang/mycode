@@ -14,6 +14,7 @@
 
 #include "gtest/gtest.h"
 #include "base/Common.h"
+#include "Heap.h"
 #include "Sorting.h"
 
 template <typename T>

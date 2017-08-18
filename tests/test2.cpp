@@ -34,6 +34,13 @@ struct A {
 		return *this;
 	}
 
+	A& operator=(const A &a) {
+		for(int j = 0; j < VAL_COUNT; j ++) {
+			val[j] = a.val[j];
+		}
+		return *this;
+	}
+
 	int p1() {
 		return val[3] - val[2];
 	}
@@ -118,6 +125,10 @@ MapA map[] = {
 };
 #else
 A _0[] = {
+		{1000, 1000, 0, 1000},
+};
+
+A _1[] = {
 		{600, 180, 420, 1200},
 		{600, 180, 420, 1200},
 		{600, 180, 420, 1200},
@@ -128,32 +139,34 @@ A _0[] = {
 		{150, 45, 105, 350},
 		{150, 45, 105, 350},
 };
-A _1[] = {
+A _2[] = {
 		{350, 45, 105, 350},
 		{300, 52, 78, 300},
 		{600, 200, 400, 600},
 };
-A _2[] = {
+
+A _3[] = {
 		{600, 600, 0, 600},
 		{600, 600, 0, 600},
 		{320, 320, 0, 320},
 		{350, 350, 0, 350},
 };
 
-//700 - 200 - 200 = 300
+//500 - 200 -100 = 200
 
-//200 * 10 = 2000
-//100 - 30 = 70
-//2000 + 300 - 78 - 105 - 400 - 600 - 320 - 150 = 647
+//150 * 10 = 1500
+//50 - 30 = 20
+//1500 + 20 + 300 - 78 - 105 - 400 - 600 - 320 = 317
 
 //1000(150)==>600
 //2800(400)==>600
-//(600+600) * 1800/85 = 25,000
+//(600+600) * 2000/70 = 34,000
 
 MapA map[] = {
-		{A(), _0, sizeof(_0)/sizeof(_0[0]), 13},
-		{A(), _1, sizeof(_1)/sizeof(_1[0]), 12},
-		{A(), _2, sizeof(_2)/sizeof(_2[0]), 7},
+		{A(), _0, sizeof(_0)/sizeof(_0[0]), 0},
+		{A(), _1, sizeof(_1)/sizeof(_1[0]), 13},
+		{A(), _2, sizeof(_2)/sizeof(_2[0]), 12},
+		{A(), _3, sizeof(_3)/sizeof(_3[0]), 7},
 };
 #endif
 
@@ -161,23 +174,23 @@ int main() {
 
 	float l = 0;
 	float remain = 0;
+
 	for(int i = 0; i < sizeof(map)/sizeof(map[0]); i ++) {
 		for(int j = 0; j < map[i].size; j ++) {
 			map[i].sum += map[i].addr[j];
 		}
 
 		map[i].sum.dump();
+		if(i < 1)
+			continue;
+
 		l = map[i].sum.l()/100 * 0.5 * map[i].m;
-		if(i < 1) {
-			//start up with 1000
-			remain += 1000 - map[0].sum.val[1];
-		} else {
-			remain += map[i - 1].sum.p1() - (map[i].sum.p1() - map[i].sum.p2());
-		}
+		remain += map[i - 1].sum.p1() - (map[i].sum.p1() - map[i].sum.p2());
 		remain -=l;
 
-		cout << "step " << i << " ==> [p1 " << map[i].sum.p1() << ", p2 " << map[i].sum.p2() <<
-				", l " << l << ", remain " << remain << "]" << endl << endl;
+		cout << "step " << i << " ==> [p1 " << map[i].sum.p1() <<
+				", p2 " << map[i].sum.p2() << ", l " << l <<
+				", remain " << remain << "]" << endl << endl;
 	}
 	return 0;
 }

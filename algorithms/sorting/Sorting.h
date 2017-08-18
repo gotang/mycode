@@ -32,25 +32,5 @@ private:
 	void quickRecursive(std::vector<T>& in, int start, int end);
 };
 
-template<typename T>
-class Heap {
-public:
-	Heap();
-	~Heap();
-	void build(std::vector<T>& heap);
-	void sort(std::vector<T>& heap);
-	void sink(std::vector<T>& heap, int k);
-	void swim(std::vector<T>& heap, int k);
-
-	void insert(std::vector<T>& heap, T val);
-	void remove(std::vector<T>& heap);
-
-	void dump(std::string title, std::vector<char>& heap);
-	int getSlashCount(int height);
-	static const int sBottomNodeInterval;
-private:
-	void sink(std::vector<T>& heap, int k, int n);
-};
-
 
 #endif /* SORTING_H_ */

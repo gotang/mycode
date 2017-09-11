@@ -224,7 +224,69 @@ public:
 	}
 };
 
+template<typename T>
+class PartialSpecification {
+public:
+	PartialSpecification(T *c, int n) {
+		a = new T[n];
+		memcpy(a, c, sizeof(T) *n);
+		num = n;
+	}
+	~PartialSpecification() {
+		delete[] a;
+	}
+
+	void print() {
+		for(int i = 0; i < num; i ++) {
+			std::cout << *(a+i);
+		}
+		std::cout << std::endl;
+	};
+private:
+	T* a;
+	int num;
+};
+
+template<>
+void PartialSpecification<int>::print() {
+	for(int i = 0; i < num; i ++) {
+		std::cout << *(a+i) << " ";
+	}
+	std::cout << std::endl;
+}
+
+void cpptest(int a) {
+	std::cout << a << std::endl;
+}
+
 TEST(CPlusPlus, AccessNamesInTemplatizedBaseClass) {
 	LoggingMsgSender<CompanyB> b;
 	b.sendClearMsg(std::string("adfad"));
 }
+
+TEST(CPlusPlus, PartialSpecification) {
+	double v[10];
+	for(int i = 0; i < 10; i ++)
+		v[i] = i;
+
+	PartialSpecification<double> pInt(v, 10);
+	pInt.print();
+
+	char c[10] = {"123456789"};
+	PartialSpecification<char> pChar(c, 10);
+	pChar.print();
+
+	double a = 10.2f;
+	cpptest(a);
+
+}
+
+
+
+
+
+
+
+
+
+

@@ -223,7 +223,6 @@ int LeetCodeA::myAtoi(string str) {
 		}
 	}
 	return sign * res;
-
 }
 
 //9.Palindrome Number

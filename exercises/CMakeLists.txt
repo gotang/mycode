@@ -31,6 +31,8 @@ add_executable(exercises
 	NowCoderVerifier.cpp
 	LintCodeVerifier.cpp
 	LintCode.cpp
+	stl/Others.cpp
+	stl/Containers.cpp
 )
 	
 target_link_libraries(exercises ${GTEST_BOTH_LIBRARIES} pthread)

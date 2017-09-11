@@ -12,7 +12,9 @@ LOCAL_SRC_ALGORITHMS:= \
 	./graph/Graphs.cpp \
 	./graph/GraphVerifier.cpp \
 	./misc/Miscellany.cpp \
-	./misc/MiscellanyVerifer.cpp
+	./misc/MiscellanyVerifer.cpp \
+	./number_theory/NumberTheory.cpp \
+	./number_theory/NumberTheoryVerifier.cpp
 
 LOCAL_C_INCLUDES:= \
 	-I. \

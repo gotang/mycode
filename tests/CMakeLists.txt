@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 # The following folder will be included
 include_directories("${PROJECT_SOURCE_DIR}")
 
-add_executable(testC ${PROJECT_SOURCE_DIR}/testC.c)
+add_executable(test_c ${PROJECT_SOURCE_DIR}/test.c)
 
 add_executable(test2 ${PROJECT_SOURCE_DIR}/test2.cpp)
 
@@ -21,5 +21,5 @@ add_executable(analyser ${PROJECT_SOURCE_DIR}/analyser.cpp)
 
 add_library(testShareLibrary SHARED ${PROJECT_SOURCE_DIR}/testShareLibrary.cpp)
 
-add_executable(testCPP ${PROJECT_SOURCE_DIR}/testCPP.cpp)
-target_link_libraries(testCPP testShareLibrary)
+add_executable(test_cpp ${PROJECT_SOURCE_DIR}/test.cpp)
+target_link_libraries(test_cpp testShareLibrary)

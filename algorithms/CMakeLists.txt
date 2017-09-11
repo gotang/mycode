@@ -33,6 +33,8 @@ add_executable(algorithms
 	graph/GraphVerifier.cpp
 	misc/Miscellany.cpp
 	misc/MiscellanyVerifer.cpp
+	number_theory/NumberTheory.cpp
+	number_theory/NumberTheoryVerifier.cpp
 
 )
 	

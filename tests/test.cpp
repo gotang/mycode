@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <cmath>
 #include <cassert>
@@ -48,61 +49,65 @@ bool permutation(BidirIt first, BidirIt last, Compare comp)
 }
 
 
-class A
+#include <iostream>
+
+class Base
 {
-    public:
-    A()
+public:
+    Base()
     {
-        printf("1");
+        std::cout << 1 << std::endl;
     }
-    A(A &a)
+    ~Base()
     {
-        printf("2");
+        std::cout << 2 << std::endl;
     }
-    A &operator=(const A &a)
-    {
-        printf("3");
-        return *this;
-    }
-    void get(){}
 };
 
-template<class InputIterator1, class InputIterator2>
-bool myEqual(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2) {
-	while (first1 != last1) {
-		if (!(*first1 == *first2)) {// or: if (!pred(*first1,*first2)), for version 2
-			cout << *first1  << " vs " << *first2 << endl;
-			return false;
-		}
-		++first1;
-		++first2;
-	}
-	return true;
-}
-class Widget {
-public:
-	Widget() {
-		cout << "Widget " << endl;
-	}
-	Widget(const Widget &u) {
-		cout << "Widget copy" << endl;
-	}
-};
-Widget f(Widget u)
+class A
 {
-	cout << "1 " << endl;
-	Widget v(u);
-	cout << "2" << endl;
-	Widget w = v;
-	cout << "3, w:" << &w << endl;
-	return w;
-}
-extern void testShareLibrary();
+public:
+    A()
+    {
+        std::cout << 3 << std::endl;
+    }
+    ~A()
+    {
+        std::cout << 4 << std::endl;
+    }
+};
+
+class B
+{
+public:
+    B()
+    {
+        std::cout << 5 << std::endl;
+    }
+    ~B()
+    {
+        std::cout << 6 << std::endl;
+    }
+};
+
+class Child : public Base
+{
+public:
+    Child()
+    {
+        std::cout << 7 << std::endl;
+    }
+    ~Child()
+    {
+        std::cout << 8 << std::endl;
+    }
+private:
+    B b;
+    A a;
+};
+
 int main()
 {
-    Widget x;
-    Widget y=f(f(x));
-    cout << "y:" << &y << endl;
-    testShareLibrary();
-	return 0;
+    Child child;
+    return 0;
 }

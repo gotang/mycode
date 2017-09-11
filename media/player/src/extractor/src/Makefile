@@ -1,7 +1,7 @@
 LOCAL_PATH:=$(shell pwd)
 include $(LOCAL_PATH)/../config.mak
 
-TARGET_DIR:=$(LOCAL_PATH)/../out
+LOCAL_OUT:=$(LOCAL_PATH)/../out
 
 LOCAL_SRC:= \
 	./utils/ESDS.cpp \
@@ -24,21 +24,22 @@ LOCAL_CFLAGS:=  \
 LOCAL_CINCLUDES:= \
 	-I$(LOCAL_PATH)/../include
 	
-LOCAL_OBJS:=$(addsuffix .o, $(basename $(LOCAL_SRC)))
+LOCAL_OBJS:=$(addprefix $(LOCAL_OUT)/, $(addsuffix .o, $(basename $(LOCAL_SRC))))
 
 ifeq ($(BUILD_SHARED_LIBRARY), 1)
-LOCAL_MODULE:=$(TARGET_DIR)/libextractor.so
+LOCAL_MODULE:=$(LOCAL_OUT)/libextractor.so
 LOCAL_CFLAGS+= \
 	-fPIC \
 	-shared
 else
-LOCAL_MODULE:=$(TARGET_DIR)/libextractor.a
+LOCAL_MODULE:=$(LOCAL_OUT)/libextractor.a
 endif
 
 all:$(LOCAL_MODULE)
 	rm $(LOCAL_OBJS) -rf
 
-$(LOCAL_OBJS):%.o:%.cpp
+$(LOCAL_OUT)/%.o:%.cpp
+	@mkdir -p $(@D)
 	g++ -o $@ $(LOCAL_CFLAGS) $(LOCAL_CINCLUDES) -c $<
 	
 ifeq ($(BUILD_SHARED_LIBRARY), 1)

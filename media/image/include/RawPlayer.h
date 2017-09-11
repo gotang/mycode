@@ -17,18 +17,24 @@ private:
 	int getFrameSize(int format, int width, int height);
 	void waitEvent(SDL_Event *event);
 	int mFd;
-	int mWidth;
-	int mHeight;
+	int mSrcWidth;
+	int mSrcHeight;
+	int mDestWidth;
+	int mDestHeight;
 	int mFormat;
 	int mRotate;
 	char *mUri;
 
-	int mDisplayWidth;
-	int mDisplayHeight;
-
+	int mWindowWidth;
+	int mWindowHeight;
+#if defined(SDL1)
 	SDL_Surface* mScreen;
 	SDL_Overlay* mOverlay;
-
+#elif defined(SDL2)
+	SDL_Window *mWindow;
+	SDL_Renderer *mRenderer;
+	SDL_Texture *mTexture;
+#endif
 	uint8_t *mSourceBuffer;
 	uint8_t *mDestBuffer;
 	uint8_t *mRotateBuffer;

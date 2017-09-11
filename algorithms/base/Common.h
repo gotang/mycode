@@ -29,6 +29,17 @@ static void dumpVector(const std::string &title, const std::vector<char>& v) {
 	std::cout << std::endl;
 }
 
+template<class Key, class Value>
+static void dumpMap(const std::string &title, const std::map<Key, Value>& m) {
+	if(!title.empty()) {
+		printf("%s:\n", title.c_str());
+	}
+	typename std::map<Key, Value>::const_iterator it;
+	int i = 0;
+	for(it = m.begin(); it != m.end(); ++it, ++i)
+		cout << i << ":[" << it->first << "][" << it->second << "]" << endl;
+}
+
 static void printDelimiterLine(const std::string &str, int len = 80) {
 	std::cout << std::endl;
 
